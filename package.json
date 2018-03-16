@@ -32,5 +32,9 @@
             "scopeName": "source.xys",
             "path": "./syntaxes/xys.tmLanguage"
         }]
+    },
+    "galleryBanner": {
+        "color": "#FE9900",
+        "theme": "dark"
     }
 }
