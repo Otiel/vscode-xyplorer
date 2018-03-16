@@ -2,7 +2,7 @@
     "name": "xys",
     "displayName": "XYplorer",
     "description": "XYplorer language support for VS Code",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "publisher": "Otiel",
     "icon": "icon.png",
     "homepage": "https://github.com/Otiel/vscode-xyplorer",
