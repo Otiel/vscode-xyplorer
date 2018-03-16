@@ -4,6 +4,16 @@
     "description": "XYplorer language support for VS Code",
     "version": "0.1.0",
     "publisher": "Otiel",
+    "icon": "icon.png",
+    "homepage": "https://github.com/Otiel/vscode-xyplorer",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Otiel/vscode-xyplorer.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Otiel/vscode-xyplorer/issues"
+    },
+    "license": "See LICENSE file",
     "engines": {
         "vscode": "^1.21.0"
     },
