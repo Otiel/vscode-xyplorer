@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>XYplorer</string>
+	<key>scopeName</key>
+	<string>source.xys</string>
+	<key>fileTypes</key>
+		<array>
+			<string>xys</string>
+			<string>xyi</string>
+			<string>inc</string>
+		</array>
+
+	<key>patterns</key>
+	<array>
+
+		<dict>
+			<key>name</key>
+			<string>comment.line.xys</string>
+			<key>match</key>
+			<string>(?&lt;!tp:)//.*?$</string>  <!-- exclude tp:  at the begining to avoid http:// and ftp:// -->
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>comment.block.xys</string>
+			<key>begin</key>
+			<string>/\*</string>
+			<key>end</key>
+			<string>\*/</string>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>entity.name.function.xys</string>   <!-- native functions,eg: abs(num) -->
+			<key>match</key>
+			<string>(?i)\b(?:abs|asc|attrstamp|base64decode|base64encode|caller|catalogreport|ceil|cell|chr|colorfilter|columnlayout|compare|confirm|copier|ctbicon|ctbname|ctbstate|datediff|datepicker|eval|exists|extracttext|extratag|filesequal|filesize|filetype|floor|folderreport|foldersize|format|formatbytes|formatdate|formatlist|get|getinfo|getkey|getpathcomponent|getsectionlist|gettoken|gettokenindex|ghost|hash|hexdump|hextodec|html|input|inputfile|inputfolder|inputselect|isset|isunicode|listfolder|listpane|loadlayout|md5|new|now|paperfolder|popupmenu|property|quicksearch|quote|rand|readfile|readurl|recase|regexmatches|regexreplace|renameitem|replace|replacelist|report|resolvepath|round|row|runret|savethumb|self|setcolumns|seticons|setlayout|strlen|strpos|strrepeat|substr|sync|tab|tabset|tagitems|taglist|toolbar|trim|tweak|urldecode|urlencode|utf8decode|utf8encode|writefile|zip_add|zip_extract|zip_list)(?=\s*\()</string>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>entity.name.function.xys</string>  <!-- native commands,eg: beep freq,time -->
+			<key>match</key>
+			<string>(?i)\b(?:assert|backupto|beep|box|br|button|call|catalogload|charview|comparehash|comment|copy|copyas|copydata|copyitem|copytext|copyto|delete|deletefile|download|echo|edittags|end|enumshellfolderitems|error|escapeunicode|exist|exit|filter|focus|fresh|freshhere|global|goto|hashlist|help|highlight|incr|info|internetflags|load|loadsearch|loadtree|logchange|logon|logtofile|makecoffee|moveas|moveto|msecs|msg|open|openwith|perm|popupmainmenu|quickfileview|readpv|releaseglobals|rename|return|rotate|rtfm|run|savesettings|screen|sel|selpos|selectitems|selfilter|seltab|sendkeys|set|setkey|setting|settingp|showhash|showshellprops|snippet|sortby|sound|status|sub|swapnames|sysicons|tag|text|timestamp|unset|unthumb|userbutton|wait|winpos|winsize|wipe|wmcopydata|writepv)(?=\s)</string>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>keyword.control.xys</string>
+			<key>match</key>
+			<string>(?i)\b(?:step|unstep|break|continue|while|if|else|elseif|foreach)\b</string>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>entity.name.function.CommandID.xys</string>
+			<key>match</key>
+			<string>(?&lt;!\w)#1?\d{3}(?!\w)</string>
+		</dict>
+
+		<dict>
+			<key>match</key>
+			<!--<string>(?i)^\s*(include(?:_once)?)\s+(.+?)\s*;?\s*$</string>-->
+            <string>(?i)^\s*(include(?:_once)?)\s+(&quot;[^&quot;]+&quot;|'[^']+'|(?!&quot;|')[^;]+(?!&quot;|'));?\s*</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.xys</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>string.other.INC.xys</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>comment.line.xys</string>
+				</dict>
+			</dict>
+		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>namespace definition</string>
+			<key>match</key>
+			<string>(?i)^\s*(namespace)\s+(\w+)$</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.xys</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>meta.class.NS.xys</string>
+				</dict>
+			</dict>
+		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>User-Defined function declaration</string>
+			<key>match</key>
+			<string>(?i)^\s*(function)\s+(\w+)(?=\s*\()</string>
+			<!-- function can be indented -->
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.xys</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>meta.class.UDF.xys</string>
+				</dict>
+			</dict>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>variable.parameter.xys</string>
+			<key>match</key>
+			<string>\|:\w+|(?i)\$[a-z_]\w*|\{:(Text|Image|Photo|Audio|Video|Media|Font|Vector|Web|Office|Archive|Executable)\}</string>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>variable.parameter.native.xys</string>
+			<key>match</key>
+			<string>(?i)&lt;[ .,\*\|\#\:\-\+\w]+&gt;|%[\w-]+%</string>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>constant.numeric.xys</string>
+			<key>match</key>
+			<string>(?&lt;=^|[\s(,=&lt;&gt;/;%^+!&amp;|\-\*\\])((?:-|\+)?)(?:\d+\.\d+)|(?:\.?\d+)</string>
+			<!-- Simpler: \b(\d+)\b -->
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>keyword.operator.xys</string>
+			<key>match</key>
+			<string>([\!)(){},]|[\*\+-\/\^%]|\sUnLikeI?\s|\sLikeI?\s|\sAND\s|\sOR\s|\sXOR\s|\sNOT\s|\s\|\|\s|\B-\B|=|\s+\.\s+|(?&lt;!\w)&gt;|&lt;(?![\w&lt;])|\B&amp;&amp;?\B)</string>
+		</dict>
+
+		<dict>
+			<key>comment</key>
+			<string>scope out unrecog functions to allow ctxhelp goto def</string>
+			<key>match</key>
+			<string>\b(?:(\w+)::)?(\w+)(?=\s*\()</string>
+			<!-- <string>(?&lt;=\s)[\w:]+(?=\s*\()</string> -->
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+					<dict>
+						<key>name</key>
+						<string>entity.name.section.NS.xys</string>
+					</dict>
+				<key>2</key>
+					<dict>
+						<key>name</key>
+						<string>entity.name.function.UDF.xys</string>
+					</dict>
+			</dict>
+		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>string.unquoted.nowdoc.xys</string> <!-- radical nowdoc -->
+			<key>begin</key>
+			<string>&lt;{3}#'(.*)'$</string>
+			<key>end</key>
+			<string>#\1</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>string.unquoted.nowdoc.xys</string> <!-- regular nowdoc -->
+			<key>begin</key>
+			<string>&lt;{3}'([^#].*)'$</string>
+			<key>end</key>
+			<string>^\1;?$</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>string.unquoted.heredoc.xys</string> <!-- radical heredoc -->
+			<key>begin</key>
+			<string>&lt;{3}(#.*)$</string>
+			<key>end</key>
+			<string>\1</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.xys</string>
+					<key>match</key>
+					<string>(?i)\$[a-z_]\w*</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.native.xys</string>
+					<key>match</key>
+					<string>(?i)&lt;[ .,\*\|\#\:\-\+\w]+&gt;|%[\w-]+%</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>string.unquoted.heredoc.xys</string> <!-- regular heredoc -->
+			<key>begin</key>
+			<string>&lt;{3}([^#](.*))$</string>
+			<key>end</key>
+			<string>^\1;?$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.xys</string>
+					<key>match</key>
+					<string>(?i)\$[a-z_]\w*</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.native.xys</string>
+					<key>match</key>
+					<string>(?i)&lt;[ .,\*\|\#\:\-\+\w]+&gt;|%[\w-]+%</string>
+				</dict>
+			</array>
+		</dict>
+
+<!-- 		<dict>
+			<key>comment</key>
+			<string>matches subscript caption</string>
+			<key>begin</key>
+			<string>^(&quot;)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>string.quoted.xys</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(&quot;)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>string.quoted.xys</string>
+				</dict>
+			</dict>
+			<key>contentName</key>
+			<string>string.other.scriptcaption.xys</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.xys</string>
+					<key>match</key>
+					<string>(?i)\|:\w+|\$[a-z_]\w*|(\s+:\s+\w+$)</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.native.xys</string>
+					<key>match</key>
+					<string>(?i)&lt;[ .,\*\|\#\:\-\+\w]+&gt;|%[\w-]+%</string>
+				</dict>
+			</array>
+		</dict>
+-->
+ 		<dict>
+			<key>begin</key>
+			<string>(&quot;|')</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>string.quoted.xys</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\1)\1{0}</string> <!-- skip escaped quotes -->
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>string.quoted.xys</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>string.quoted.xys</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.xys</string>
+					<key>match</key>
+					<string>\|:\w+|(?i)\$[a-z_]\w*</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.native.xys</string>
+					<key>match</key>
+					<string>&lt;[ .,\*\|\#\:\-\+\w]+&gt;|%[A-Za-z0-9()_-]+%</string>
+				</dict>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.CommandID.xys</string>
+					<key>match</key>
+					<string>(?&lt;!\w)#1?\d{3}(?!\w)</string>
+				</dict>
+			</array>
+		</dict>
+
+	</array>
+</dict>
+</plist>

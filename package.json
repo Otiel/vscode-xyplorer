@@ -1,0 +1,26 @@
+{
+    "name": "xys",
+    "displayName": "XYplorer",
+    "description": "XYplorer scripts language support for VS Code",
+    "version": "0.0.1",
+    "publisher": "Otiel",
+    "engines": {
+        "vscode": "^1.21.0"
+    },
+    "categories": [
+        "Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "xys",
+            "aliases": ["XYplorer", "xys"],
+            "extensions": [".xys",".xyi"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "xys",
+            "scopeName": "source.xys",
+            "path": "./syntaxes/xys.tmLanguage"
+        }]
+    }
+}
