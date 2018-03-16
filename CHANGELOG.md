@@ -1,5 +1,3 @@
-# Change Log
-All changes to the vscode-xyplorer extension:
 ## v0.2.0
 - VS Marketplace: Modified gallery banner color to reflect XYplorer icon color.
 
