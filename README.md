@@ -25,4 +25,4 @@ The `.tmLanguague` file is based on https://github.com/Binocular222/XYplorer/blo
 License
 -------
 
-_vscode-xyplorer_ is licensed under the [MIT](https://github.com/Otiel/vscode-xyplorer/blob/master/LICENSE) license.
+_vscode-xyplorer_ is licensed under the MIT license - see the [LICENSE](https://github.com/Otiel/vscode-xyplorer/blob/master/LICENSE) file for details.
