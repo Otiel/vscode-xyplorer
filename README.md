@@ -1,4 +1,4 @@
-XYplorer language support for VS Code
+![Logo](https://i.imgur.com/KtnTc6C.png) XYplorer language support for VS Code
 =====================================
 
 This extension adds support for the XYplorer scripting language to VS Code:
